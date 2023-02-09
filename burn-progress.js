@@ -1,9 +1,10 @@
 // ==UserScript==
 // @name         Burn Progress
 // @namespace    http://tampermonkey.net/
-// @version      1.3
+// @version      1.4
 // @description  Wanikani dashboard extension to display progress toward burning all items
 // @author       Rex Walters (Rrwrex, rw [at] pobox.com)
+// @supportURL   https://github.com/wrex/burn-progress/issues
 // @license      MIT https://opensource.org/licenses/mit-license.php
 // @match        https://*.wanikani.com/dashboard
 // @grant        none
@@ -112,10 +113,9 @@
       .bp-bar {
         height: 36px;
         position: relative;
-        background: var(--ED-light-surface-5, #e0e0e0);
+        background: var(--ED-inverted-surface, #e0e0e0);
         border-radius: 25px;
         box-shadow: inset 0px 2px 0 0 rgb(0 0 0 / 10%);
-        /* padding: 10px; */
         vertical-align: middle;
         margin-top: 10px;
       }
@@ -123,7 +123,7 @@
         display: block;
         float: left;
         line-height: 36px;
-        color: white;
+        color: var(--ED-text-clr, white);
         height: 100%;
         position: relative;
         overflow: hidden;
@@ -159,28 +159,18 @@
     bpStyle.innerHTML = progressBarCSS;
     document.querySelector("head").append(bpStyle);
 
-    //  Free users only have access to a subset of items, so the totalItems count
-    //  will be much smaller for users without a subscription.
-    //
-    //  So display, e.g., "349 total free items" for free users
-    //  and "8995 total items" for paid users (or whatever the current numbers are)
-    let totalText = "";
-    options["Subscription Status"] === "free"
-      ? (totalText = `${totalItems} total free items`)
-      : (totalText = `${totalItems} total items`);
-
     // Only show the burned item count if there are any
-    let seenText = "";
-    burnedItems > 0
-      ? (seenText = `${seenItems} seen (${burnedItems} burned)`)
-      : (seenText = `${seenItems} seen`);
+    let progressText =
+      burnedItems > 0
+        ? `${inProgressItems} under review, ${seenItems} of ${totalItems} seen, ${burnedItems} burned`
+        : `${inProgressItems} under review, ${seenItems} of ${totalItems} seen`;
 
     const progressBarHTML = `
     <div class="bp-bar" value="${totalItems}">
       <span class="bp-bar-burns" value="${burnedItems}">${burnedPercent}% burned</span>
       <span class="bp-bar-seen" value="${seenItems}">${seenPercent}% seen</span>
     </div>
-    <p>${totalText}: ${seenText}</p>
+    <p>${progressText}</p>
     `;
 
     //   Create a DIV to hold the progressbar
