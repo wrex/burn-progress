@@ -6,7 +6,7 @@
 // @author       Rex Walters (Rrwrex, rw [at] pobox.com)
 // @supportURL   https://github.com/wrex/burn-progress/issues
 // @license      MIT https://opensource.org/licenses/mit-license.php
-// @match        https://*.wanikani.com/dashboard
+// @match        https://*.wanikani.com/*
 // @grant        none
 // ==/UserScript==
 
