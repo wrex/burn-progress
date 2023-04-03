@@ -1,12 +1,17 @@
 // ==UserScript==
 // @name         Burn Progress
 // @namespace    http://tampermonkey.net/
-// @version      1.5
+// @version      1.6
 // @description  Wanikani dashboard extension to display progress toward burning all items
 // @author       Rex Walters (Rrwrex, rw [at] pobox.com)
 // @supportURL   https://github.com/wrex/burn-progress/issues
 // @license      MIT https://opensource.org/licenses/mit-license.php
-// @match        https://*.wanikani.com/*
+// @match        http*://wanikani.com
+// @match        http*://www.wanikani.com
+// @match        http*://preview.wanikani.com
+// @match        http*://wanikani.com/dashboard
+// @match        http*://www.wanikani.com/dashboard
+// @match        http*://preview.wanikani.com/dashboard
 // @grant        none
 // ==/UserScript==
 
