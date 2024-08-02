@@ -6,9 +6,9 @@
 // @author       Rex Walters (Rrwrex, rw [at] pobox.com)
 // @supportURL   https://github.com/wrex/burn-progress/issues
 // @license      MIT https://opensource.org/licenses/mit-license.php
-// @match        http*://wanikani.com
-// @match        http*://www.wanikani.com
-// @match        http*://preview.wanikani.com
+// @match        http*://wanikani.com/
+// @match        http*://www.wanikani.com/
+// @match        http*://preview.wanikani.com/
 // @match        http*://wanikani.com/dashboard
 // @match        http*://www.wanikani.com/dashboard
 // @match        http*://preview.wanikani.com/dashboard
@@ -184,6 +184,6 @@
     burnsBar.innerHTML = progressBarHTML;
 
     // Now add our new div at the top of the page before the progress and forecast section
-    document.querySelector(".progress-and-forecast").before(burnsBar);
+    document.querySelector(".dashboard__content").before(burnsBar);
   }
 })();
